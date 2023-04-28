@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background: #1a1535;
+  color: #f8efe5;
+  font-family: Nunito, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+main::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: -150px;
+  width: 400px;
+  height: 400px;
+  background: url("./images/design.png") no-repeat;
+}
+
+.container {
+  margin: 50px;
+  padding: 50px;
+  max-width: 800px;
+  border: solid 1px #57585e;
+  border-radius: 18px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 30px #f8efe5, inset 0 0 8px #000000;
+  color: #f8efe5;
+  font-family: Nunito, Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+}
+
+.calc {
+  margin: 0 25px;
+}
+
+h1,
+.calc-description p {
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.calc-description p {
+  margin-bottom: 35px;
+}
+
+input,
+button {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: Nunito, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.calc-options {
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+
+/* webkit этаче */
+::-webkit-input-placeholder {
+  color: #f8efe57e;
+}
+
+.form-input input {
+  position: relative;
+  width: 100%;
+  padding: 0 18px;
+  box-sizing: border-box;
+  height: 50px;
+  border-radius: 7px;
+  background-color: #312b53;
+  box-shadow: 0 0 7px #f8efe5, inset 0 0 5px #1a15358a;
+  color: #f8efe5;
+  font-size: 18px;
+}
+
+/* .form-inputs label {
+  display: block;
+} */
+
+.form-inputs {
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-inputs .form-input,
+.currency-switcher {
+  width: 45%;
+  padding-bottom: 25px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.currency-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currency-buttons button {
+  width: 29%;
+  box-sizing: border-box;
+  height: 50px;
+  border-radius: 7px;
+  background-color: #312b53;
+  box-shadow: 0 0 7px #f8efe5, inset 0 0 5px #1a15358a;
+  color: #f8efe5;
+  font-size: 20px;
+}
+
+.currency-buttons .active {
+  background-color: #e2c5c7;
+  box-shadow: 0 0 15px #e2c5c7, inset 0 0 5px #1a15358a;
+  color: #1a1535;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button {
+  display: block;
+  width: 45%;
+  height: 50px;
+  padding: 8px;
+  border-radius: 7px;
+  color: #1a1535;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.calc-button {
+  background-color: #e2c5c7;
+  box-shadow: 0 0 30px #e2c5c7, inset 0 0 5px #1a15358a;
+}
+
+.reset-button {
+  background-color: #ffe8aa;
+  box-shadow: 0 0 30px #ffe8aa, inset 0 0 5px #1a15358a;
+}
+
+.calc-button:hover,
+.currency-buttons button:hover {
+  box-shadow: 0 0 30px #e2c5c79d, inset 0 0 5px #1a15358a;
+}
+
+.calc-button:active,
+.currency-buttons button:active {
+  box-shadow: 0 0 30px #e2c5c79d, inset 0 0 7px #1a1535;
+  font-size: 19px;
+}
+
+.reset-button:hover {
+  box-shadow: 0 0 30px #ffe8aa9d, inset 0 0 5px #1a15358a;
+}
+
+.reset-button:active {
+  box-shadow: 0 0 30px #ffe8aa9d, inset 0 0 7px #1a1535;
+  font-size: 19px;
+}
+
+.hide {
+  visibility: hidden;
+  height: 0px;
+}
+
+h2 {
+  margin-bottom: 18px;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  border-radius: 7px;
+  background-color: #312b53;
+  box-shadow: 0 0 7px #f8efe5, inset 0 0 5px #1a15358a;
+  color: #f8efe5;
+  font-size: 18px;
+}
+
+.result {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.total div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8px;
+}
+
+.total div:last-child {
+  margin-bottom: 0px;
+}

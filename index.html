@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="инвестиции, вклад, сложные проценты, сбережения"
+    />
+    <meta
+      name="description"
+      content="Это калькулятор, который поможет вам посчитать свои сбережения с учетом сложных процентов"
+    />
+    <link rel="icon" href="./images/favicon1.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Compound interest calculator</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="calc">
+          <div class="calc-description">
+            <h1>КАЛЬКУЛЯТОР СЛОЖНЫХ ПРОЦЕНТОВ</h1>
+            <p>
+              Калькулятор поможет рассчитать сумму накоплений для достижения
+              финансовых целей. Построен на формуле сложных процентов и
+              учитывает налоги.
+            </p>
+          </div>
+
+          <div class="calc-options">
+            <form>
+              <div class="form-inputs">
+                <div class="form-input">
+                  <label for="start-capital">Стартовый капитал</label>
+                  <input
+                    type="text"
+                    name="start-capital"
+                    id="start-capital"
+                    autocomplete="off"
+                    placeholder="100 000 ₽"
+                  />
+                </div>
+
+                <div class="currency-switcher">
+                  <label>Валюта</label>
+                  <div class="currency-buttons">
+                    <button class="ruble-button">₽</button>
+                    <button class="dollar-button">$</button>
+                    <button class="euro-button">€</button>
+                  </div>
+                </div>
+
+                <div class="form-input">
+                  <label for="years">Период накопления</label>
+                  <input
+                    type="text"
+                    name="years"
+                    id="years"
+                    autocomplete="off"
+                    placeholder="10 лет"
+                  />
+                </div>
+
+                <div class="form-input">
+                  <label for="monthly-contribution"
+                    >Сумма ежемесячного пополнения</label
+                  >
+                  <input
+                    type="text"
+                    name="monthly-contribution"
+                    id="monthly-contribution"
+                    autocomplete="off"
+                    placeholder="10 000 ₽"
+                  />
+                </div>
+
+                <div class="form-input">
+                  <label for="interest">Среднегодовая доходность</label>
+                  <input
+                    type="text"
+                    name="interest"
+                    id="interest"
+                    autocomplete="off"
+                    placeholder="6 %"
+                  />
+                </div>
+
+                <!-- <div class="form-input">
+                  <label for="number-replenishment"
+                    >Число пополнений в год</label
+                  >
+                  <input
+                    type="text"
+                    name="number-replenishment"
+                    id="number-replenishment"
+                    autocomplete="off"
+                    placeholder="12"
+                  />
+                </div> -->
+
+                <!-- <div class="form-input">
+                  <label for="capitalization-amount">
+                    Число капитализаций в год</label
+                  >
+                  <input
+                    type="text"
+                    name="capitalization-amount"
+                    id="capitalization-amount"
+                    autocomplete="off"
+                    placeholder="12"
+                  />
+                </div> -->
+
+                <!-- <div class="form-input">
+                  <label for="inflation">Инфляция</label>
+                  <input
+                    type="text"
+                    name="inflation"
+                    id="inflation"
+                    autocomplete="off"
+                    placeholder="6 %"
+                  />
+                </div> -->
+
+                <div class="form-input">
+                  <label for="taxes">Налоги</label>
+                  <input
+                    type="text"
+                    name="taxes"
+                    id="taxes"
+                    autocomplete="off"
+                    placeholder="13 %"
+                  />
+                </div>
+              </div>
+            </form>
+
+            <div class="buttons">
+              <button class="calc-button">Рассчитать</button>
+              <button class="reset-button">Сбросить</button>
+            </div>
+          </div>
+
+          <div class="calc-results hide">
+            <h2>Результаты</h2>
+
+            <!-- <div class="tabs">
+              <div class="bar-chart"><span>Гистограмма</span></div>
+              <div class="graph"><span>График</span></div>
+              <div class="table"><span>Таблица</span></div>
+            </div> -->
+
+            <div class="total">
+              <div class="total-investments">
+                <span>Итоговая сумма вложений</span>
+                <span class="result" data-result="total-investments"></span>
+              </div>
+
+              <div class="total-accumulation">
+                <span>Итоговая сумма накоплений</span>
+                <span class="result" data-result="total-accumulation"></span>
+              </div>
+
+              <div class="without-taxes hide">
+                <span>Итоговая сумма за вычетом налогов</span>
+                <span class="result" data-result="without-taxes"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
