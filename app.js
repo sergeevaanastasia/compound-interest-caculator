@@ -36,34 +36,7 @@ let currency = ruble;
 
 // for of?
 allInputs.forEach((input) => input.addEventListener("input", validateValue));
-
 allInputs.forEach((input) => input.addEventListener("input", setUnit));
-
-// allInputs.forEach((input) =>
-//   input.addEventListener("keydown", (event) => {
-//     if (event.key === "Backspace") {
-//       if (input === years) {
-//         input.selectionStart = input.selectionEnd = input.value.replace(
-//           /[^\d]/g,
-//           ""
-//         ).length;
-//       } else {
-//         input.selectionStart = input.selectionEnd = input.value.length - 2;
-//       }
-//     }
-//   })
-// );
-
-// allInputs.forEach((input) =>
-//   input.addEventListener("keydown", (event) => {
-//     if (event.key === "Backspace") {
-//       let cursor = input.selectionStart;
-//       input.selectionStart = input.selectionEnd = cursor;
-
-//       console.log("backspace");
-//     }
-//   })
-// );
 
 calcButton.addEventListener("click", calculateResults);
 resetButton.addEventListener("click", resetValues);
@@ -90,7 +63,6 @@ chooseCurrency();
 
 function validateValue() {
   let validValue = this.value.replace(/[^\d]/g, "");
-  // let cursor = this.selectionStart;
 
   if (this === years || this === interest || this === taxes) {
     if (Number(validValue) > 99) {
@@ -100,7 +72,6 @@ function validateValue() {
     validValue = validValue.slice(0, 12);
   }
   this.value = validValue.replace(regExpSeparator, "$1 ");
-  // this.selectionStart = this.selectionEnd = cursor;
 }
 
 function setUnit() {
@@ -253,23 +224,9 @@ function showResults() {
   } else {
     withoutTaxesDiv.classList.add("hide");
   }
-
-  wtfunction();
 }
 
 function resetValues() {
   allInputs.forEach((input) => (input.value = ""));
   calcResults.classList.add("hide");
-}
-
-function wtfunction() {
-  if (String(resultTotalInvestments).length > 18) {
-    let question = confirm("Вы Джеффри Безос?");
-
-    if (question) {
-      alert("Come on, Jeffrey! You can do it!");
-    } else {
-      alert("Чего балуешься, вводи свои настоящие бабке");
-    }
-  }
 }
