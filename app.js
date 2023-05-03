@@ -196,20 +196,24 @@ function calculateResults() {
 
   // Сalculating the value of current accumulation without taxes
   if (values.taxes) {
-    for (let i = 1; i <= values.years; i++) {
-      let currentInvestments =
-        currentAccumulation * periodFactor +
-        (values.monthlyContribution * (periodFactor - 1)) /
-          (values.interest / 12);
+    if (values.interest) {
+      for (let i = 1; i <= values.years; i++) {
+        let currentInvestments =
+          currentAccumulation * periodFactor +
+          (values.monthlyContribution * (periodFactor - 1)) /
+            (values.interest / 12);
 
-      let currentTaxes =
-        (currentInvestments -
-          (currentAccumulation + values.monthlyContribution * 12)) *
-        values.taxes;
+        let currentTaxes =
+          (currentInvestments -
+            (currentAccumulation + values.monthlyContribution * 12)) *
+          values.taxes;
 
-      currentAccumulation = currentInvestments - currentTaxes;
+        currentAccumulation = currentInvestments - currentTaxes;
+      }
+      resultAccumulationWithoutTaxes = Math.round(currentAccumulation);
+    } else {
+      resultAccumulationWithoutTaxes = resultTotalInvestments;
     }
-    resultAccumulationWithoutTaxes = Math.round(currentAccumulation);
   }
 
   // Сalculating the value of accumulation with taxes
@@ -258,14 +262,14 @@ function resetValues() {
   calcResults.classList.add("hide");
 }
 
-// function wtfunction() {
-//   if (String(resultTotalInvestments).length > 18) {
-//     let question = confirm("Вы Джеффри Безос?");
+function wtfunction() {
+  if (String(resultTotalInvestments).length > 18) {
+    let question = confirm("Вы Джеффри Безос?");
 
-//     if (question) {
-//       alert("Come on, Jeffrey! You can do it!");
-//     } else {
-//       alert("Чего балуешься, вводи свои настоящие бабке");
-//     }
-//   }
-// }
+    if (question) {
+      alert("Come on, Jeffrey! You can do it!");
+    } else {
+      alert("Чего балуешься, вводи свои настоящие бабке");
+    }
+  }
+}
