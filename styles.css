@@ -6,7 +6,13 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
+  width: 100%;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   background: #1a1535;
@@ -220,4 +226,25 @@ h2 {
 
 .total div:last-child {
   margin-bottom: 0px;
+}
+
+@media (max-width: 750px) {
+  .container {
+    margin: 25px;
+    padding: 25px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .calc {
+    margin: 0;
+  }
+  .form-inputs .form-input,
+  .currency-switcher {
+    width: 100%;
+  }
+
+  .buttons button {
+    font-size: 18px;
+  }
 }
