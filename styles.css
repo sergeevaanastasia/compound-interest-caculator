@@ -92,10 +92,6 @@ button {
   font-size: 18px;
 }
 
-/* .form-inputs label {
-  display: block;
-} */
-
 .form-inputs {
   margin-bottom: 16px;
   display: flex;
@@ -214,8 +210,9 @@ h2 {
 .total div {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 8px;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 18px;
 }
 
 .total div:last-child {
@@ -244,7 +241,7 @@ h2 {
     width: 100%;
   }
   .buttons button {
-    font-size: 16px;
+    font-size: 18px;
     width: 48%;
   }
   .calc-button:active,
@@ -254,9 +251,8 @@ h2 {
   .reset-button:active {
     font-size: 15px;
   }
-  .total div {
-    align-items: flex-start;
-    flex-direction: column;
+  .result {
+    font-size: 20px;
   }
 }
 
