@@ -210,8 +210,7 @@ h2 {
 .total div {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: flex-end;
   margin-bottom: 18px;
 }
 
@@ -256,4 +255,10 @@ h2 {
   }
 }
 
+@media (max-width: 850px) {
+  .total div {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
 /* убрать ховеры для мобилок */
