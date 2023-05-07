@@ -6,13 +6,7 @@
   padding: 0;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
-  width: 100%;
-  overflow-x: hidden;
   display: flex;
   justify-content: center;
   background: #1a1535;
@@ -56,7 +50,6 @@ main::before {
 
 h1,
 .calc-description p {
-  width: 100%;
   text-align: center;
 }
 
@@ -108,6 +101,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .form-inputs .form-input,
@@ -234,7 +228,10 @@ h2 {
     padding: 25px;
   }
   h1 {
-    font-size: 32px;
+    font-size: 25px;
+  }
+  p {
+    font-size: 18px;
   }
   .calc {
     margin: 0;
@@ -244,6 +241,20 @@ h2 {
     width: 100%;
   }
   .buttons button {
-    font-size: 18px;
+    font-size: 16px;
+    width: 48%;
+  }
+  .calc-button:active,
+  .currency-buttons button:active {
+    font-size: 15px;
+  }
+  .reset-button:active {
+    font-size: 15px;
+  }
+  .total div {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
+
+/* убрать ховеры для мобилок */
