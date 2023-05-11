@@ -23,7 +23,7 @@ const totalAccumulation = document.querySelector(
 );
 const withoutTaxes = document.querySelector("[data-result=without-taxes]");
 
-let regExpSeparator = /(\d)(?=(\d\d\d)+([^\d]|$))/g;
+let regExpSeparator = /(\d)(?=(\d\d\d)+([\D]|$))/g;
 
 let resultTotalInvestments = 0;
 let resultTotalAccumulation = 0;
@@ -62,7 +62,7 @@ function chooseCurrency() {
 chooseCurrency();
 
 function validateValue() {
-  let validValue = this.value.replace(/[^\d]/g, "");
+  let validValue = this.value.replace(/[\D]/g, "");
 
   if (this === years || this === interest || this === taxes) {
     if (Number(validValue) > 99) {
@@ -78,22 +78,28 @@ function setUnit() {
   let numValue = Number(this.value);
   let cursor = this.selectionStart;
 
-  if (/[0-9]/.test(this.value)) {
-    if (this === interest || this == taxes) {
-      this.value += " %";
-    } else if (this === startCapital || this === monthlyContribution) {
-      this.value += " " + currency;
-    } else if (this === years) {
-      if (numValue % 10 === 1 && numValue % 100 !== 11) {
-        this.value += " год";
-      } else if (
-        [2, 3, 4].includes(numValue % 10) &&
-        ![12, 13, 14].includes(numValue % 100)
-      ) {
-        this.value += " года";
-      } else {
-        this.value += " лет";
-      }
+  if (/[\d]/.test(this.value)) {
+    switch (this) {
+      case interest:
+      case taxes:
+        this.value += " %";
+        break;
+      case startCapital:
+      case monthlyContribution:
+        this.value += " " + currency;
+        break;
+      case years:
+        if (numValue % 10 === 1 && numValue % 100 !== 11) {
+          this.value += " год";
+        } else if (
+          [2, 3, 4].includes(numValue % 10) &&
+          ![12, 13, 14].includes(numValue % 100)
+        ) {
+          this.value += " года";
+        } else {
+          this.value += " лет";
+        }
+        break;
     }
   }
 
@@ -118,25 +124,20 @@ function changeCurrency() {
   }
 
   for (let currencyInput of currencyInputs) {
-    if (currencyInput) {
-      currencyInput.value = currencyInput.value.replace(/.$/, currency);
-    }
+    currencyInput.value = currencyInput.value.replace(/.$/, currency);
   }
 
   for (let result of results) {
-    if (result) {
-      result.textContent = result.textContent.replace(/.$/, currency);
-    }
+    result.textContent = result.textContent.replace(/.$/, currency);
   }
 }
 
 function getValues() {
-  for (let i = 0; i <= allInputs.length; i++) {}
   let allInputsValues = [...allInputs].map((input) =>
-    Number(input.value.replace(/[^\d]/g, ""))
+    Number(input.value.replace(/[\D]/g, ""))
   );
 
-  return (values = {
+  return {
     startCapital: allInputsValues[0],
     years: allInputsValues[1],
     monthlyContribution: allInputsValues[2],
@@ -144,11 +145,11 @@ function getValues() {
     // capitalizationAmount: allInputsValues[4],
     // inflation: allInputsValues[5] / 100,
     taxes: allInputsValues[4] / 100,
-  });
+  };
 }
 
 function calculateResults() {
-  getValues();
+  const values = getValues();
 
   // A = P * (1 + r / 12) ** (12*t)+ d * ((1 + r / 12) ** (12*t)- 1) / (r / 12)
 
@@ -215,7 +216,7 @@ function showResults() {
       " " +
       currency;
   }
-  if (values.taxes) {
+  if (Number(taxes.value.replace(/[\D]/g, ""))) {
     withoutTaxesDiv.classList.remove("hide");
     withoutTaxes.textContent =
       String(resultAccumulationWithoutTaxes).replace(regExpSeparator, "$1 ") +
